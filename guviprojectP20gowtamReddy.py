@@ -1,3 +1,8 @@
+#Project for
+#i) GUI to store address into database
+#ii) A second GUI to retrieve data from database
+
+
 import tkinter
 from tkinter import *
 from tkinter import messagebox
