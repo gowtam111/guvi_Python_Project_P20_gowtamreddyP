@@ -12,7 +12,7 @@ mydb = mysql.connector.connect(
     host='localhost',
     user='root',
     password='admin',
-    database='employees'
+    database='master_students'
 )
 
 my_cursor = mydb.cursor()
