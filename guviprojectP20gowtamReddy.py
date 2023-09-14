@@ -50,14 +50,14 @@ def search_details():
     my_cursor.execute(f"select * from students_address where name='{entry7.get()}'")
     row = my_cursor.fetchone()
     if row == None:
-        messagebox.showwarning("showwarning", "Name not found in the address list")
+        messagebox.showwarning("Warning!!", "Name not found in the address list")
     else:
         my_cursor.execute(f"select * from students_address where name='{entry7.get()}'")
         i = 11
         for student in my_cursor:
             for j in range(len(student)):
-                e = Entry(box, width=10, fg='black')
-                e.grid(row=i, column=j)
+                e = Entry(box1, width=25, fg='black')
+                e.pack(side="bottom")
                 e.insert(END, student[j])
         i = i + 1
 
@@ -66,8 +66,13 @@ def clear_details():
     entry7.delete(0, END)
 
 box = tkinter.Tk()
-box.title('GuviAddresses')
+box.title('Guvi Address Management for insert')
 font1 = ('Calibri', 20)
+box.geometry("+500+100")
+
+box1 = tkinter.Tk()
+box1.title('Guvi Fetch Student address')
+box1.geometry("+500+550")
 
 labelmain = Label(master=box, text='Guvi Students Address Insert', font=font1, fg='#050000',
                   background='Grey',
@@ -78,23 +83,23 @@ label3 = Label(master=box, text='city:', font=font1, fg='#050000', background='L
 label4 = Label(master=box, text='Age:', font=font1, fg='#050000', background='LightSalmon', width='10')
 label5 = Label(master=box, text='email:', font=font1, fg='#050000', background='LightSalmon', width='10')
 label6 = Label(master=box, text='pincode:', font=font1, fg='#050000', background='LightSalmon', width='10')
-label7 = Label(master=box, text='name:', font=font1, fg='#050000', background='LightSalmon', width='10')
+label7 = Label(master=box1, text='name:', font=font1, fg='#050000', background='LightSalmon', width='10')
 entry1 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
 entry2 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
 entry3 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
 entry4 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
 entry5 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
 entry6 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
-entry7 = Entry(master=box, font=font1, fg='#050000', background='White', width='10')
+entry7 = Entry(master=box1, font=font1, fg='#050000', background='White', width='10')
 button1 = Button(master=box, text='Submit', font=font1, fg='#050000', background='White', width='8', height='1',
                  command=submit_address_details)
 button2 = Button(master=box, text='Reset', font=font1, fg='#050000', background='White', width='8', height='1',
                  command=reset_details)
-labelfetch = Label(master=box, text='Guvi Students Address Fetch', font=font1, fg='#050000',background='Grey',
+labelfetch = Label(master=box1, text='Guvi Students Address Fetch', font=font1, fg='#050000',background='Grey',
                   width='50', height='3')
-button3 = Button(master=box, text='Fetch', font=font1, fg='#050000', background='White', width='8', height='1',
+button3 = Button(master=box1, text='Fetch', font=font1, fg='#050000', background='White', width='8', height='1',
                  command=search_details)
-button4 = Button(master=box, text='Clear', font=font1, fg='#050000', background='White', width='8', height='1',
+button4 = Button(master=box1, text='Clear', font=font1, fg='#050000', background='White', width='8', height='1',
                  command=clear_details)
 labelmain.grid(column=0, row=0, columnspan=3)
 label1.grid(row=1, column=1)
@@ -111,9 +116,15 @@ entry5.grid(row=5, column=2)
 entry6.grid(row=6, column=2)
 button1.grid(row=7, column=1)
 button2.grid(row=7, column=2)
-labelfetch.grid(column=0, row=8, columnspan=3)
-label7.grid(row=9, column=1)
-entry7.grid(row=9, column=2)
-button3.grid(row=10, column=1)
-button4.grid(row=10, column=2)
+# labelfetch.pack(column=0, row=8, columnspan=3)
+# label7.pack(row=9, column=1)
+# entry7.pack(row=9, column=2)
+# button3.pack(row=10, column=1)
+# button4.pack(row=10, column=2)
+labelfetch.pack()
+label7.pack(side="left")
+entry7.pack(side="left")
+button3.pack(side="left")
+button4.pack(side="left")
 box.mainloop()
+box1.mainloop()
